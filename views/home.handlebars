@@ -1,0 +1,74 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="article-container">
+      <article>
+        <div class="container">
+          <div class="reg-format">
+            <span>Format example:</span>
+            CA 334536 | CA 334 536 | CA 334-536
+          </div>
+          <p class="error-msg">'Error'</p>
+          {{! FORM FOR SENDING REG NUMBERS ONLY }}
+          <form action="/reg_numbers" method="POST">
+            <label class="reg-num-label" for="reg-num">
+              Enter a Registration Number:
+            </label>
+            <div class="input-btn-container">
+              <input
+                class="text-input"
+                type="text"
+                placeholder="eg: CA 334-853"
+                name="input"
+              />
+              <button class="add-btn" type="submit">
+                <div class="btn-container add-btn-container">
+                  <ion-icon
+                    class="icon add-icon"
+                    name="add-circle-outline"
+                  ></ion-icon>
+                  <p>Add</p>
+                </div>
+              </button>
+            </div>
+          </form>
+          {{! FORM FOR SENDING REG NUMBERS ONLY }}
+          <p class="msg"></p>
+          <div class="reg-num-container"></div>
+          <div class="select-btn-container">
+            <select name="towns" id="dropdown">
+              <option value="">Select a Town</option>
+              <option value="CA">Cape Town (CA)</option>
+              <option value="CL">Stellenbosch (CL)</option>
+              <option value="CJ">Paarl (CJ)</option>
+              <option value="CK">Malmesbury (CK)</option>
+              <option value="CF">Kuils River (CF)</option>
+            </select>
+            <button class="filter-btn">
+              <div class="btn-container filter-btn-container">
+                <ion-icon
+                  class="icon filter-icon"
+                  name="filter-outline"
+                ></ion-icon>
+                <p>Filter</p>
+              </div>
+            </button>
+            <button class="clear-btn">
+              <div class="btn-container clear-btn-container">
+                <ion-icon
+                  class="icon clear-icon"
+                  name="trash-outline"
+                ></ion-icon>
+                <p>Clear</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
