@@ -1,0 +1,156 @@
+/* https://coolors.co/palette/d8f3dc-b7e4c7-95d5b2-74c69d-52b788-40916c-2d6a4f-1b4332-081c15 */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Lato", sans-serif;
+  background-image: url(../img-registration-numbers.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(7px);
+  min-height: 100vh;
+}
+.article-container,
+.input-btn-container,
+.btn-container,
+.select-btn-container {
+  display: flex;
+  gap: 20px;
+}
+.article-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-container .container {
+  padding: 10px;
+  padding-top: 50px;
+}
+
+.error-msg {
+  color: red;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.reg-format,
+label,
+.reg-num,
+.msg {
+  color: #d8f3dc;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+button {
+  border: none;
+  letter-spacing: 0.8px;
+}
+
+.select-btn-container {
+  flex-direction: column;
+  gap: 10px;
+}
+.add-btn {
+  background-color: #1b4332;
+  border: 3px solid #b7e4c7;
+  border-radius: 7px;
+  color: #d8f3dc;
+  padding: 9px 18px;
+}
+.msg {
+  text-transform: uppercase;
+}
+.filter-btn,
+.clear-btn {
+  background-color: #2d6a4f;
+  border: 3px dotted #d8f3dc;
+  border-radius: 14px;
+  color: #d8f3dc;
+}
+.add-btn-container {
+  gap: 5px;
+}
+.btn-container p,
+.icon {
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.filter-btn-container,
+.clear-btn-container {
+  justify-content: center;
+  padding: 7px 17px;
+  gap: 5px;
+}
+.reg-format {
+  margin-bottom: 10px;
+}
+.text-input,
+select {
+  padding: 10px;
+}
+.input-btn-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.reg-num,
+.number-plates-from {
+  width: fit-content;
+  padding: 10px;
+  background-color: #52b788;
+  color: #d8f3dc;
+  border: 3px solid #1b4332;
+  margin-block: 15px;
+  min-height: 27px;
+  max-width: 400px;
+  margin-right: 12px;
+}
+.reg-num-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hidden {
+  display: none;
+}
+@media (min-width: 68em) {
+  article {
+    max-width: 57rem;
+  }
+  .article-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .error-msg {
+    font-size: 2.8rem;
+  }
+  .reg-format,
+  label,
+  .reg-num {
+    color: #d8f3dc;
+    font-size: 2.8rem;
+    font-weight: 700;
+  }
+  .text-input,
+  select {
+    padding: 15px;
+  }
+  .add-btn {
+    padding: 9px 32px;
+  }
+  .btn-container p,
+  .icon {
+    font-size: 2.2rem;
+  }
+  .input-btn-container,
+  .btn-container,
+  .select-btn-container {
+    align-items: center;
+  }
+  .select-btn-container {
+    flex-direction: row;
+  }
+}
