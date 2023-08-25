@@ -38,7 +38,11 @@
           </form>
           {{! FORM FOR SENDING REG NUMBERS ONLY }}
           <p class="msg"></p>
-          <div class="reg-num-container"></div>
+          <div class="reg-num-container">
+            {{#each registrations}}
+              <div class="reg-num">{{this.reg_numbers}}</div>
+            {{/each}}
+          </div>
           <div class="select-btn-container">
             <select name="towns" id="dropdown">
               <option value="">Select a Town</option>

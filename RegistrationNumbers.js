@@ -1,25 +1,25 @@
 export default function RegNumbers() {
-  let numPlate = "";
-  let regNumbersMap = {};
-  let filteredTown;
-  const regex = /^(CA|CL|CJ|CK|CF)\s\d{3}(-? ?\d{1,3})$/i;
-  function setRegNum(input) {
-    numPlate = input.toUpperCase();
-  }
-  function validRegNum() {
-    if (regex.test(numPlate)) {
-      if (regNumbersMap[numPlate] === undefined) {
-        regNumbersMap[numPlate] = 0;
-      } else {
-        regNumbersMap[numPlate]++;
-      }
-      if (regNumbersMap[numPlate] < 1) {
-        return numPlate;
-      } else {
-        return;
-      }
-    }
-  }
+  // let numPlate = "";
+  // let regNumbersMap = {};
+  // let filteredTown;
+  // const regex = /^(CA|CL|CJ|CK|CF)\s\d{3}(-? ?\d{1,3})$/i;
+  // function setRegNum(input) {
+  //   numPlate = input.toUpperCase();
+  // }
+  // function validRegNum() {
+  //   if (regex.test(numPlate)) {
+  //     if (regNumbersMap[numPlate] === undefined) {
+  //       regNumbersMap[numPlate] = 0;
+  //     } else {
+  //       regNumbersMap[numPlate]++;
+  //     }
+  //     if (regNumbersMap[numPlate] < 1) {
+  //       return numPlate;
+  //     } else {
+  //       return;
+  //     }
+  //   }
+  // }
   function getRegNumbersMap() {
     return regNumbersMap;
   }
@@ -54,8 +54,8 @@ export default function RegNumbers() {
     return (filteredTown = []);
   }
   return {
-    setRegNum,
-    validRegNum,
+    // setRegNum,
+    // validRegNum,
     errorMsg,
     getRegNumbersMap,
     selectedTown,
