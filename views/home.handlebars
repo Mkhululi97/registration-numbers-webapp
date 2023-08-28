@@ -52,6 +52,7 @@
               <option value="CK">Malmesbury (CK)</option>
               <option value="CF">Kuils River (CF)</option>
             </select>
+
             <button class="filter-btn">
               <div class="btn-container filter-btn-container">
                 <ion-icon
@@ -61,18 +62,21 @@
                 <p>Filter</p>
               </div>
             </button>
-            <button class="clear-btn">
-              <div class="btn-container clear-btn-container">
-                <ion-icon
-                  class="icon clear-icon"
-                  name="trash-outline"
-                ></ion-icon>
-                <p>Clear</p>
-              </div>
-            </button>
+            <form action="/reset" method="POST">
+              <button class="clear-btn">
+                <div class="btn-container clear-btn-container">
+                  <ion-icon
+                    class="icon clear-icon"
+                    name="trash-outline"
+                  ></ion-icon>
+                  <p>Clear</p>
+                </div>
+              </button>
+            </form>
           </div>
         </div>
       </article>
     </main>
+    <script src="/frontendjs/index.js"></script>
   </body>
 </html>

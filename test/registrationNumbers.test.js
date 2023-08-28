@@ -29,6 +29,17 @@ describe("Testing RegistrationNumber Function", function () {
       }
     });
   });
+  describe("resetRegistrations function", function () {
+    it("clear all the registration numbers in the reg_numbers table", async function () {
+      let dbFactoryFunc = DBFactoryFunc(db);
+      dbFactoryFunc.setRegNum("ca 223-988");
+      dbFactoryFunc.setRegNum("cl 997 990");
+      assert.deepEqual(
+        { count: "0" },
+        await dbFactoryFunc.resetRegistrations()
+      );
+    });
+  });
 
   // close of the connection to the database.
   after(function () {

@@ -62,6 +62,7 @@ app.use(flash());
 //CREATE HOME OR DEFAULT ROUTE
 app.get("/", registrationsRoute.home);
 app.post("/reg_numbers", registrationsRoute.registrations);
+app.post("/reset", registrationsRoute.reset);
 /* -------------------- ALL ROUTES -------------------- */
 
 // CREATE PORT VARIABLE

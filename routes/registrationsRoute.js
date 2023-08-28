@@ -12,6 +12,7 @@ export default function RegistrationsRoute(factoryFunc, dbFunc) {
       console.log(err);
     }
   }
+
   // create an async funtion to call on the POST '/reg_numbers' route in the index.js file
   async function registrations(req, res) {
     try {
@@ -26,5 +27,13 @@ export default function RegistrationsRoute(factoryFunc, dbFunc) {
       console.log(err);
     }
   }
-  return { home, registrations };
+  async function reset(req, res) {
+    try {
+      await dbFunc.resetRegistrations();
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  return { home, registrations, reset };
 }
