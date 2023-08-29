@@ -4,6 +4,9 @@ const clearBtn = document.querySelector(".clear-btn");
 const filterBtn = document.querySelector(".filter-btn");
 /* ##### GET THE div registrations ##### */
 const filterContainer = document.querySelector(".reg-num-filtered");
+/* ##### GET P ELEMENT THAT DISPLAYS ERROR TEXTS ##### */
+const errorTextEle = document.querySelector(".error-msg");
+const infoTextEle = document.querySelector(".msg");
 
 /* ############## FUNCTIONS ############## */
 
@@ -16,7 +19,10 @@ function clearFunction(e) {
   );
   clearData ? "" : e.preventDefault();
 }
-
+setTimeout(function () {
+  errorTextEle.innerHTML !== "" ? (errorTextEle.innerHTML = "") : "";
+  infoTextEle.innerHTML !== "" ? (infoTextEle.innerHTML = "") : "";
+}, 2500);
 // function filterFunction(e) {
 // // e.preventDefault();
 // filterContainer.classList.remove("show");

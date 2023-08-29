@@ -1,14 +1,14 @@
 export default function RegistrationsRoute(factoryFunc, dbFunc) {
   // create an async funtion to call on the GET '/' route in the index.js file
   async function home(req, res) {
+    req.flash("error-msg", dbFunc.getErrorText());
+    req.flash("msg", dbFunc.getinfoText());
     try {
       // render the html template on home.handlebars
       res.render("home", {
         // send an array of object/s which contain all field names for the
         // reg_numbers tables as well as the records, to the frontend.
         registrations: await dbFunc.getRegNum(),
-        // filteredRegNums: await dbFunc.getSelectedTownRegNums(),
-        // registrations: await dbFunc.getSelectedTownRegNums(),
       });
     } catch (err) {
       console.log(err);

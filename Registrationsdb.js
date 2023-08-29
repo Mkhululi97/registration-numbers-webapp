@@ -5,7 +5,8 @@ export default function dbFactoryFunc(db) {
   let registrationstable;
   let registrationsArrayFromTown;
   let filterOn = false;
-  let regNumbersMap = {};
+  let errorText;
+  let infoText;
   let filteredTown;
   /* 
     regex to match a string that starts with a town name(ca,cl,cj,ck,cf)
@@ -26,11 +27,12 @@ export default function dbFactoryFunc(db) {
       );
       if (!existingReg) {
         town_id_foriegn = town_id.town_id;
-        // await db.none ("select num_plate from reg_numbers where num_plate = $1",[num_plate])
         await db.none(
           "insert into reg_numbers (reg_numbers, town_id) values ($1, $2)",
           [num_plate, town_id_foriegn]
         );
+      } else {
+        errorText = "Registration Exists";
       }
       registrationstable = await db.manyOrNone("select * from reg_numbers");
       filterOn = false;
@@ -60,6 +62,9 @@ export default function dbFactoryFunc(db) {
       let totalRegistrations = await db.oneOrNone(
         "select count(reg_numbers) from reg_numbers"
       );
+      if (totalRegistrations["count"] === "0") {
+        infoText = "No Registrations to clear";
+      }
       return totalRegistrations;
     } catch (err) {
       console.log(err);
@@ -100,7 +105,12 @@ export default function dbFactoryFunc(db) {
       return registrationstable;
     }
   }
-
+  function getErrorText() {
+    return errorText;
+  }
+  function getinfoText() {
+    return infoText;
+  }
   /* ------------------------- FUNCTIONS TO CALL ON YOUR HOME ROUTE ------------------------- */
 
   return {
@@ -109,5 +119,7 @@ export default function dbFactoryFunc(db) {
     setTown,
     resetRegistrations,
     showForTown,
+    getErrorText,
+    getinfoText,
   };
 }

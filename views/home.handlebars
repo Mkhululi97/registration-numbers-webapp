@@ -12,7 +12,7 @@
             <span>Format example:</span>
             CA 334536 | CA 334 536 | CA 334-536
           </div>
-          <p class="error-msg">'Error'</p>
+          <p class="error-msg">{{messages.error-msg}}</p>
           {{! FORM FOR SENDING REG NUMBERS ONLY }}
           <form action="/reg_numbers" method="POST">
             <label class="reg-num-label" for="reg-num">
@@ -37,7 +37,7 @@
             </div>
           </form>
           {{! FORM FOR SENDING REG NUMBERS ONLY }}
-          <p class="msg"></p>
+          <p class="msg">{{messages.msg}}</p>
           <div class="reg-num-container">
             {{#each registrations}}
               <div class="reg-num">{{this.reg_numbers}}</div>
