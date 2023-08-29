@@ -44,26 +44,30 @@
             {{/each}}
           </div>
           <div class="select-btn-container">
-            <select name="towns" id="dropdown">
-              <option value="">Select a Town</option>
-              <option value="CA">Cape Town (CA)</option>
-              <option value="CL">Stellenbosch (CL)</option>
-              <option value="CJ">Paarl (CJ)</option>
-              <option value="CK">Malmesbury (CK)</option>
-              <option value="CF">Kuils River (CF)</option>
-            </select>
+            {{! FILTER FORM START }}
+            <form action="/filter" method="POST">
+              <select name="towns" id="dropdown">
+                <option value="">Select a Town</option>
+                <option value="CA">Cape Town (CA)</option>
+                <option value="CL">Stellenbosch (CL)</option>
+                <option value="CJ">Paarl (CJ)</option>
+                <option value="CK">Malmesbury (CK)</option>
+                <option value="CF">Kuils River (CF)</option>
+              </select>
 
-            <button class="filter-btn">
-              <div class="btn-container filter-btn-container">
-                <ion-icon
-                  class="icon filter-icon"
-                  name="filter-outline"
-                ></ion-icon>
-                <p>Filter</p>
-              </div>
-            </button>
+              <button class="filter-btn" type="submit">
+                <div class="btn-container filter-btn-container">
+                  <ion-icon
+                    class="icon filter-icon"
+                    name="filter-outline"
+                  ></ion-icon>
+                  <p>Filter</p>
+                </div>
+              </button>
+            </form>
+            {{! FILTER FORM END }}
             <form action="/reset" method="POST">
-              <button class="clear-btn">
+              <button class="clear-btn" type="submit">
                 <div class="btn-container clear-btn-container">
                   <ion-icon
                     class="icon clear-icon"

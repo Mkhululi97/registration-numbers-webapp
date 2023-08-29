@@ -63,6 +63,7 @@ app.use(flash());
 app.get("/", registrationsRoute.home);
 app.post("/reg_numbers", registrationsRoute.registrations);
 app.post("/reset", registrationsRoute.reset);
+app.post("/filter", registrationsRoute.filter);
 /* -------------------- ALL ROUTES -------------------- */
 
 // CREATE PORT VARIABLE

@@ -7,6 +7,7 @@ export default function RegistrationsRoute(factoryFunc, dbFunc) {
         // send an array of object/s which contain all field names for the
         // reg_numbers tables as well as the records, to the frontend.
         registrations: await dbFunc.getRegNum(),
+        filteredRegNums: await dbFunc.getSelectedTownRegNums(),
       });
     } catch (err) {
       console.log(err);
@@ -35,5 +36,14 @@ export default function RegistrationsRoute(factoryFunc, dbFunc) {
       console.log(err);
     }
   }
-  return { home, registrations, reset };
+  async function filter(req, res) {
+    try {
+      let currentTown = req.body.towns;
+      await dbFunc.showForTown(currentTown);
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  return { home, registrations, reset, filter };
 }

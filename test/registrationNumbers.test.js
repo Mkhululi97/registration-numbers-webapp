@@ -20,9 +20,14 @@ describe("Testing RegistrationNumber Function", function () {
     it("should not store repeating registration numbers", async function () {
       try {
         let dbFactoryFunc = DBFactoryFunc(db);
-        dbFactoryFunc.setRegNum("ca 222-344");
-        dbFactoryFunc.setRegNum("ca 222-344");
-        let resArr = [{ reg_id: 1, reg_numbers: "CA 222-344", town_id: null }];
+
+        await dbFactoryFunc.setTown("ca 222-344");
+        await dbFactoryFunc.setRegNum("ca 222-344");
+
+        await dbFactoryFunc.setTown("ca 222-344");
+        await dbFactoryFunc.setRegNum("ca 222-344");
+
+        let resArr = [{ reg_id: 1, reg_numbers: "CA 222-344", town_id: 5 }];
         assert.deepEqual(resArr, await dbFactoryFunc.getRegNum());
       } catch (err) {
         console.log(err);
@@ -32,15 +37,34 @@ describe("Testing RegistrationNumber Function", function () {
   describe("resetRegistrations function", function () {
     it("clear all the registration numbers in the reg_numbers table", async function () {
       let dbFactoryFunc = DBFactoryFunc(db);
-      dbFactoryFunc.setRegNum("ca 223-988");
-      dbFactoryFunc.setRegNum("cl 997 990");
+
+      await dbFactoryFunc.setTown("ca 223-988");
+      await dbFactoryFunc.setRegNum("ca 223-988");
+
+      await dbFactoryFunc.setTown("cl 997-990");
+      await dbFactoryFunc.setRegNum("cl 997 990");
       assert.deepEqual(
         { count: "0" },
         await dbFactoryFunc.resetRegistrations()
       );
     });
   });
+  describe("getSelectedTownRegNums function", function () {
+    it("show only the registration numbers from the selected town", async function () {
+      let dbFactoryFunc = DBFactoryFunc(db);
 
+      await dbFactoryFunc.setTown("ca 997 990");
+      await dbFactoryFunc.setRegNum("ca 997 990");
+
+      await dbFactoryFunc.setTown("cl 924950");
+      await dbFactoryFunc.setRegNum("cl 924950");
+
+      await dbFactoryFunc.showForTown("CL");
+      let resArr = [{ reg_id: 2, town_id: 4, reg_numbers: "CL 924950" }];
+
+      assert.deepEqual(resArr, await dbFactoryFunc.getSelectedTownRegNums());
+    });
+  });
   // close of the connection to the database.
   after(function () {
     db.$pool.end();
