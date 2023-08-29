@@ -43,6 +43,11 @@
               <div class="reg-num">{{this.reg_numbers}}</div>
             {{/each}}
           </div>
+          <div class="reg-num-container-filtered">
+            {{#each filteredRegNums}}
+              <div class="reg-num-filtered">{{this.reg_numbers}}</div>
+            {{/each}}
+          </div>
           <div class="select-btn-container">
             {{! FILTER FORM START }}
             <form action="/filter" method="POST">
@@ -55,7 +60,7 @@
                 <option value="CF">Kuils River (CF)</option>
               </select>
 
-              <button class="filter-btn" type="submit">
+              <button class="filter-btn">
                 <div class="btn-container filter-btn-container">
                   <ion-icon
                     class="icon filter-icon"

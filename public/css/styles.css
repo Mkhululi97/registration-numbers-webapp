@@ -113,6 +113,12 @@ select {
   display: flex;
   flex-wrap: wrap;
 }
+.show {
+  font-size: 80px;
+  background-color: #52b788;
+  color: #1b4332;
+  padding: 50px;
+}
 .hidden {
   display: none;
 }

@@ -4,6 +4,7 @@ export default function dbFactoryFunc(db) {
   let town_id_foriegn;
   let registrationstable;
   let registrationsArrayFromTown;
+  let filterOn = false;
   let regNumbersMap = {};
   let filteredTown;
   /* 
@@ -11,7 +12,6 @@ export default function dbFactoryFunc(db) {
     string takes minmum of 4 numbers and max of 6 numbers.
   */
   const regex = /^(CA|CL|CJ|CK|CF)\s\d{3}(-? ?\d{1,3})$/i;
-  // function setRegNum(input) {}
   /*
    use town_id to set a foriegn key for the reg_numbers table
    store current registration number in the reg_numbers table
@@ -33,6 +33,7 @@ export default function dbFactoryFunc(db) {
         );
       }
       registrationstable = await db.manyOrNone("select * from reg_numbers");
+      filterOn = false;
     }
   }
 
@@ -54,6 +55,7 @@ export default function dbFactoryFunc(db) {
       num_plate = "";
       town_id = "";
       registrationsArrayFromTown = [];
+      registrationstable = [];
       await db.none("truncate table reg_numbers restart identity cascade");
       let totalRegistrations = await db.oneOrNone(
         "select count(reg_numbers) from reg_numbers"
@@ -63,6 +65,7 @@ export default function dbFactoryFunc(db) {
       console.log(err);
     }
   }
+  /* Only Show Registrations From The Selected Town */
   async function showForTown(inputTown) {
     try {
       if (inputTown !== "") {
@@ -86,15 +89,18 @@ export default function dbFactoryFunc(db) {
     } catch (err) {
       console.log(err);
     }
+    filterOn = true;
   }
 
   /* ------------------------- FUNCTIONS TO CALL ON YOUR HOME ROUTE ------------------------- */
   async function getRegNum() {
-    return registrationstable;
+    if (filterOn) {
+      return registrationsArrayFromTown;
+    } else {
+      return registrationstable;
+    }
   }
-  async function getSelectedTownRegNums() {
-    return registrationsArrayFromTown;
-  }
+
   /* ------------------------- FUNCTIONS TO CALL ON YOUR HOME ROUTE ------------------------- */
 
   return {
@@ -103,6 +109,5 @@ export default function dbFactoryFunc(db) {
     setTown,
     resetRegistrations,
     showForTown,
-    getSelectedTownRegNums,
   };
 }

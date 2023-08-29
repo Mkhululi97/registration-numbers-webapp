@@ -7,7 +7,8 @@ export default function RegistrationsRoute(factoryFunc, dbFunc) {
         // send an array of object/s which contain all field names for the
         // reg_numbers tables as well as the records, to the frontend.
         registrations: await dbFunc.getRegNum(),
-        filteredRegNums: await dbFunc.getSelectedTownRegNums(),
+        // filteredRegNums: await dbFunc.getSelectedTownRegNums(),
+        // registrations: await dbFunc.getSelectedTownRegNums(),
       });
     } catch (err) {
       console.log(err);
