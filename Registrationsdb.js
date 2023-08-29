@@ -37,6 +37,8 @@ export default function dbFactoryFunc(db) {
       registrationstable = await db.manyOrNone("select * from reg_numbers");
       filterOn = false;
     }
+    num_plate = "";
+    town_id = "";
   }
 
   /* update town_id variable according town of the current registration number */
@@ -54,17 +56,17 @@ export default function dbFactoryFunc(db) {
   /* Clear Data From reg_numbers Table On The DB */
   async function resetRegistrations() {
     try {
-      num_plate = "";
-      town_id = "";
+      // num_plate = "";
+      // town_id = "";
       registrationsArrayFromTown = [];
       registrationstable = [];
+      let x = await db.manyOrNone("select * from reg_numbers");
+
+      x.length > 0 ? (infoText = "") : (infoText = "No Registrations to clear");
       await db.none("truncate table reg_numbers restart identity cascade");
       let totalRegistrations = await db.oneOrNone(
         "select count(reg_numbers) from reg_numbers"
       );
-      if (totalRegistrations["count"] === "0") {
-        infoText = "No Registrations to clear";
-      }
       return totalRegistrations;
     } catch (err) {
       console.log(err);
