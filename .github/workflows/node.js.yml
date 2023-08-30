@@ -29,5 +29,5 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
         env:
-          # PGDATABASE_URL: postgres://vqthznfa:cSLO6aJkFno7kUa3KXx2ZB7BMYG5EkwR@trumpet.db.elephantsql.com/vqthznfa
-          PGDATABASE_URL: process.env.PGDATABASE_URL
+          PGDATABASE_URL: postgres://vqthznfa:cSLO6aJkFno7kUa3KXx2ZB7BMYG5EkwR@trumpet.db.elephantsql.com/vqthznfa
+          # PGDATABASE_URL: process.env.PGDATABASE_URL

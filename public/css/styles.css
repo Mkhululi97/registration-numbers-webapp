@@ -18,9 +18,12 @@ body {
 .article-container,
 .input-btn-container,
 .btn-container,
-.select-btn-container {
+.select-filter-clear {
   display: flex;
   gap: 20px;
+}
+.select-filter-clear {
+  gap: 0;
 }
 .article-container {
   flex-direction: column;
@@ -36,7 +39,6 @@ body {
   color: red;
   font-size: 2rem;
   font-weight: 700;
-  /* text-transform: uppercase; */
 }
 .reg-format,
 label,
@@ -45,6 +47,9 @@ label,
   color: #d8f3dc;
   font-size: 2.2rem;
   font-weight: 700;
+}
+.msg {
+  margin-bottom: 15px;
 }
 button {
   border: none;
@@ -71,6 +76,7 @@ button {
   border: 3px dotted #d8f3dc;
   border-radius: 14px;
   color: #d8f3dc;
+  margin-left: 15px;
 }
 .add-btn-container {
   gap: 5px;
@@ -95,7 +101,7 @@ select {
 }
 .input-btn-container {
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 45px;
 }
 .reg-num,
 .number-plates-from {
@@ -125,6 +131,7 @@ select {
 @media (min-width: 68em) {
   article {
     max-width: 57rem;
+    padding-block-end: 40px;
   }
   .article-container {
     flex-direction: row;

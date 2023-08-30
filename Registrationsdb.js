@@ -19,12 +19,16 @@ export default function dbFactoryFunc(db) {
    get all the registrations from reg_numbers table and return the results
   */
   async function setRegNum(input) {
+    errorText = "";
     num_plate = input.toUpperCase();
+
     if (regex.test(num_plate)) {
+      // check whether the registration number entered, exists on the db
       let existingReg = await db.oneOrNone(
         "select * from reg_numbers where reg_numbers=$1",
         [num_plate]
       );
+      // only add the registration when it doesn't exist on the db
       if (!existingReg) {
         town_id_foriegn = town_id.town_id;
         await db.none(
@@ -32,15 +36,19 @@ export default function dbFactoryFunc(db) {
           [num_plate, town_id_foriegn]
         );
       } else {
-        errorText = "Registration Exists";
+        errorText = "Registration number exists";
       }
       registrationstable = await db.manyOrNone("select * from reg_numbers");
       filterOn = false;
+    } else {
+      errorText = "Please enter valid a registration number";
+    }
+    if (num_plate === "") {
+      errorText = "Input empty please enter a registration number";
     }
     num_plate = "";
     town_id = "";
   }
-
   /* update town_id variable according town of the current registration number */
   async function setTown(input) {
     let twoLetters = input.slice(0, 2).toUpperCase();
@@ -61,12 +69,12 @@ export default function dbFactoryFunc(db) {
       registrationsArrayFromTown = [];
       registrationstable = [];
       let x = await db.manyOrNone("select * from reg_numbers");
-
-      x.length > 0 ? (infoText = "") : (infoText = "No Registrations to clear");
+      x.length > 0 ? "" : (infoText = "No Registrations to clear");
       await db.none("truncate table reg_numbers restart identity cascade");
       let totalRegistrations = await db.oneOrNone(
         "select count(reg_numbers) from reg_numbers"
       );
+      // infoText = "";
       return totalRegistrations;
     } catch (err) {
       console.log(err);

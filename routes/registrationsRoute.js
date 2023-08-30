@@ -1,8 +1,6 @@
 export default function RegistrationsRoute(factoryFunc, dbFunc) {
   // create an async funtion to call on the GET '/' route in the index.js file
   async function home(req, res) {
-    req.flash("error-msg", dbFunc.getErrorText());
-    req.flash("msg", dbFunc.getinfoText());
     try {
       // render the html template on home.handlebars
       res.render("home", {
@@ -24,6 +22,7 @@ export default function RegistrationsRoute(factoryFunc, dbFunc) {
       await dbFunc.setTown(input);
       // send reginumbers to the server
       await dbFunc.setRegNum(input);
+      req.flash("error-msg", dbFunc.getErrorText());
       res.redirect("/");
     } catch (err) {
       console.log(err);
@@ -32,6 +31,7 @@ export default function RegistrationsRoute(factoryFunc, dbFunc) {
   async function reset(req, res) {
     try {
       await dbFunc.resetRegistrations();
+      req.flash("msg", dbFunc.getinfoText());
       res.redirect("/");
     } catch (err) {
       console.log(err);

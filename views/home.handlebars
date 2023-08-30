@@ -48,44 +48,58 @@
               <div class="reg-num-filtered">{{this.reg_numbers}}</div>
             {{/each}}
           </div>
-          <div class="select-btn-container">
-            {{! FILTER FORM START }}
-            <form action="/filter" method="POST">
-              <select name="towns" id="dropdown">
-                <option value="">Select a Town</option>
-                <option value="CA">Cape Town (CA)</option>
-                <option value="CL">Stellenbosch (CL)</option>
-                <option value="CJ">Paarl (CJ)</option>
-                <option value="CK">Malmesbury (CK)</option>
-                <option value="CF">Kuils River (CF)</option>
-              </select>
+          {{! FILTER FORM START }}
+          <div class="select-filter-clear">
+            <div>
+              <form action="/filter" method="POST">
+                <select name="towns" id="dropdown">
+                  <option value="">Select a Town</option>
+                  <option value="CA">Cape Town (CA)</option>
+                  <option value="CL">Stellenbosch (CL)</option>
+                  <option value="CJ">Paarl (CJ)</option>
+                  <option value="CK">Malmesbury (CK)</option>
+                  <option value="CF">Kuils River (CF)</option>
+                </select>
 
-              <button class="filter-btn">
-                <div class="btn-container filter-btn-container">
-                  <ion-icon
-                    class="icon filter-icon"
-                    name="filter-outline"
-                  ></ion-icon>
-                  <p>Filter</p>
-                </div>
-              </button>
-            </form>
+                <button class="filter-btn">
+                  <div class="btn-container filter-btn-container">
+                    <ion-icon
+                      class="icon filter-icon"
+                      name="filter-outline"
+                    ></ion-icon>
+                    <p>Filter</p>
+                  </div>
+                </button>
+              </form>
+            </div>
             {{! FILTER FORM END }}
-            <form action="/reset" method="POST">
-              <button class="clear-btn" type="submit">
-                <div class="btn-container clear-btn-container">
-                  <ion-icon
-                    class="icon clear-icon"
-                    name="trash-outline"
-                  ></ion-icon>
-                  <p>Clear</p>
-                </div>
-              </button>
-            </form>
+            <div>
+              <form action="/reset" method="POST">
+                <button class="clear-btn" type="submit">
+                  <div class="btn-container clear-btn-container">
+                    <ion-icon
+                      class="icon clear-icon"
+                      name="trash-outline"
+                    ></ion-icon>
+                    <p>Clear</p>
+                  </div>
+                </button>
+              </form>
+            </div>
+
           </div>
+          {{! filter and clear button container }}
         </div>
       </article>
     </main>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="/frontendjs/index.js"></script>
   </body>
 </html>
