@@ -13,6 +13,7 @@
             CA 334536 | CA 334 536 | CA 334-536
           </div>
           <p class="error-msg">{{messages.error-msg}}</p>
+          <p class="msg">{{messages.msg}}</p>
           {{! FORM FOR SENDING REG NUMBERS ONLY }}
           <form action="/reg_numbers" method="POST">
             <label class="reg-num-label" for="reg-num">
@@ -37,17 +38,6 @@
             </div>
           </form>
           {{! FORM FOR SENDING REG NUMBERS ONLY }}
-          <p class="msg">{{messages.msg}}</p>
-          <div class="reg-num-container">
-            {{#each registrations}}
-              <div class="reg-num">{{this.reg_numbers}}</div>
-            {{/each}}
-          </div>
-          <div class="reg-num-container-filtered">
-            {{#each filteredRegNums}}
-              <div class="reg-num-filtered">{{this.reg_numbers}}</div>
-            {{/each}}
-          </div>
           {{! FILTER FORM START }}
           <div class="select-filter-clear">
             <div>
@@ -60,7 +50,6 @@
                   <option value="CK">Malmesbury (CK)</option>
                   <option value="CF">Kuils River (CF)</option>
                 </select>
-
                 <button class="filter-btn">
                   <div class="btn-container filter-btn-container">
                     <ion-icon
@@ -86,9 +75,19 @@
                 </button>
               </form>
             </div>
-
           </div>
           {{! filter and clear button container }}
+          <div class="reg-num-container">
+            {{#each registrations}}
+              <div class="reg-num">{{this.reg_numbers}}</div>
+            {{/each}}
+          </div>
+          <div class="reg-num-container-filtered">
+            {{#each filteredRegNums}}
+              <div class="reg-num-filtered">{{this.reg_numbers}}</div>
+            {{/each}}
+          </div>
+
         </div>
       </article>
     </main>
