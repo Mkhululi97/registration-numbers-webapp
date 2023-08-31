@@ -23,6 +23,7 @@ export default function RegistrationsRoute(factoryFunc, dbFunc) {
       // send reginumbers to the server
       await dbFunc.setRegNum(input);
       req.flash("error-msg", dbFunc.getErrorText());
+      req.flash("error-text", factoryFunc.showErrors(input));
       res.redirect("/");
     } catch (err) {
       console.log(err);

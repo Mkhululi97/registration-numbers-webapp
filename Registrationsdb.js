@@ -40,11 +40,6 @@ export default function dbFactoryFunc(db) {
       }
       registrationstable = await db.manyOrNone("select * from reg_numbers");
       filterOn = false;
-    } else {
-      errorText = "Please enter valid a registration number";
-    }
-    if (num_plate === "") {
-      errorText = "Input empty please enter a registration number";
     }
     num_plate = "";
     town_id = "";

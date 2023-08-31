@@ -62,7 +62,7 @@ describe("Testing RegistrationNumber Function", function () {
       await dbFactoryFunc.showForTown("CL");
       let resArr = [{ reg_id: 2, town_id: 4, reg_numbers: "CL 924950" }];
 
-      assert.deepEqual(resArr, await dbFactoryFunc.getSelectedTownRegNums());
+      assert.deepEqual(resArr, await dbFactoryFunc.getRegNum());
     });
   });
   // close of the connection to the database.
@@ -70,4 +70,20 @@ describe("Testing RegistrationNumber Function", function () {
     db.$pool.end();
   });
   /* ------------------------ TESTS CONNECTED TO THE DATABASE ------------------------ */
+
+  /* ------------------------ NORMAL TESTS ------------------------ */
+  describe("showErrors function", function () {
+    it("should return error message based on criteria ", function () {
+      let facotryFunc = RegNumbers();
+      assert.equal(
+        "Input empty please enter a registration number",
+        facotryFunc.showErrors("")
+      );
+      assert.equal(
+        "Please enter a valid registration number",
+        facotryFunc.showErrors("fu 44534")
+      );
+    });
+  });
+  /* ------------------------ NORMAL TESTS ------------------------ */
 });
