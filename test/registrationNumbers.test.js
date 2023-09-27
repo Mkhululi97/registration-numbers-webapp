@@ -66,9 +66,9 @@ describe("Testing RegistrationNumber Function", function () {
     });
   });
   // close of the connection to the database.
-  after(function () {
-    db.$pool.end();
-  });
+  // after(function () {
+  //   db.$pool.end();
+  // });
   /* ------------------------ TESTS CONNECTED TO THE DATABASE ------------------------ */
 
   /* ------------------------ NORMAL TESTS ------------------------ */
